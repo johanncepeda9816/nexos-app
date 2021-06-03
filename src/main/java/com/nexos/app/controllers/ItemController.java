@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -32,9 +33,20 @@ public class ItemController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = { "updateItem" })
-    public ResponseEntity<?> updateItem(@RequestBody Item item){
+    public ResponseEntity<?> updateItem(@RequestBody Item item, @RequestParam("user") int user){
         try {
-            itemServices.updateItem(item);
+            itemServices.updateItem(item, user);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, path = { "deleteItem" })
+    public ResponseEntity<?> deleteItem(@RequestParam("name") String name){
+        try {
+            itemServices.deleteItem(name);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

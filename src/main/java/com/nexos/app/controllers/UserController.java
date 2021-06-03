@@ -1,5 +1,7 @@
 package com.nexos.app.controllers;
 
+import java.util.List;
+
 import com.nexos.app.entities.User;
 import com.nexos.app.services.UserServices;
 
@@ -19,6 +21,16 @@ public class UserController {
 
     @Autowired
     UserServices userServices;
+
+    @RequestMapping(method = RequestMethod.GET, path = { "allUsers" })
+    public ResponseEntity<List<User>> getAllUsers(){
+        try {
+            List<User> users = userServices.getAllUsers();
+            return ResponseEntity.ok().body(users);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @RequestMapping(method = RequestMethod.POST, path = { "addUser" })
     public ResponseEntity<?> addUser(@RequestBody User user){

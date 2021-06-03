@@ -5,6 +5,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,32 +18,37 @@ public class User implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private int id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "age")
     private int age;
-    @Column(name = "position")
-    private Position position;
-    @Column(name = "enterDate")
-    private Date enterDate;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "position")
+    private PositionType position;
+
+    @Column(name = "enter_date")
+    private Date enterDate;
 
     public User() {
     }
 
-    public User(String name, int age, Position position, Date enterDate) {
+    public User(String name, int age, PositionType position, Date enterDate) {
         this.name = name;
         this.age = age;
         this.position = position;
         this.enterDate = enterDate;
     }
 
-    public Long getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -61,11 +68,11 @@ public class User implements Serializable{
         this.age = age;
     }
 
-    public Position getPosition() {
+    public PositionType getPosition() {
         return this.position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(PositionType position) {
         this.position = position;
     }
 

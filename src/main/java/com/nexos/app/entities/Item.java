@@ -13,25 +13,28 @@ import javax.persistence.Table;
 public class Item implements Serializable{
     
     @Id
+    @Column(name = "name")
     private String name;
     @Column(name = "product")
     private String product;
     @Column(name = "amount")
     private int amount;
-    @Column(name = "enterDate")
+    @Column(name = "enter_date")
     private Date enterDate;
-    @Column(name = "user")
-    private User user;
+    @Column(name = "creator")
+    private int creatorId;
+    @Column(name = "modified")
+    private boolean modified;
 
     public Item() {
     }
 
-    public Item(String name, String product, int amount, Date enterDate, User user) {
+    public Item(String name, String product, int amount, Date enterDate, int creatorId) {
         this.name = name;
         this.product = product;
         this.amount = amount;
         this.enterDate = enterDate;
-        this.user = user;
+        this.creatorId = creatorId;
     }
 
     public String getName() {
@@ -66,12 +69,32 @@ public class Item implements Serializable{
         this.enterDate = enterDate;
     }
 
-    public User getUser() {
-        return this.user;
+    public int getCreatorId() {
+        return this.creatorId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public boolean isModified() {
+        return this.modified;
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public int getUser() {
+        return this.creatorId;
+    }
+
+    public void setUser(int user) {
+        this.creatorId = user;
+    }
+
+    public boolean getModified() {
+        return this.modified;
+    }
+
+    public void setModified(boolean modified) {
+        this.modified = modified;
     }
 
     @Override
@@ -81,8 +104,9 @@ public class Item implements Serializable{
             ", product='" + getProduct() + "'" +
             ", amount='" + getAmount() + "'" +
             ", enterDate='" + getEnterDate() + "'" +
-            ", user='" + getUser() + "'" +
+            ", creatorId='" + getCreatorId() + "'" +
+            ", modified='" + getModified() + "'" +
             "}";
     }
-
+    
 }
