@@ -3,7 +3,7 @@ package com.nexos.app.controllers;
 import java.sql.Date;
 import java.util.List;
 
-import com.nexos.app.entities.Item;
+import com.nexos.app.model.Item;
 import com.nexos.app.services.ItemServices;
 
 import org.springframework.beans.factory.annotation.Autowired;

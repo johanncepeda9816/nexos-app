@@ -3,7 +3,7 @@ package com.nexos.app.repositories;
 import java.sql.Date;
 import java.util.List;
 
-import com.nexos.app.entities.Item;
+import com.nexos.app.model.Item;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -2,7 +2,7 @@ package com.nexos.app.controllers;
 
 import java.util.List;
 
-import com.nexos.app.entities.User;
+import com.nexos.app.model.User;
 import com.nexos.app.services.UserServices;
 
 import org.springframework.beans.factory.annotation.Autowired;

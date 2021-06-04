@@ -1,4 +1,4 @@
-package com.nexos.app.entities;
+package com.nexos.app.model;
 
 public enum PositionType {
     ASESOR, ADMINISTRADOR, SOPORTE 

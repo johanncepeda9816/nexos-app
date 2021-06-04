@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
-import com.nexos.app.AppException;
-import com.nexos.app.entities.Item;
-import com.nexos.app.entities.ModificationRegister;
-import com.nexos.app.entities.User;
+import com.nexos.app.exceptions.AppException;
+import com.nexos.app.model.Item;
+import com.nexos.app.model.ModificationRegister;
+import com.nexos.app.model.User;
 import com.nexos.app.repositories.ItemRepository;
 import com.nexos.app.repositories.ModificationsRepository;
 import com.nexos.app.repositories.UserRepository;

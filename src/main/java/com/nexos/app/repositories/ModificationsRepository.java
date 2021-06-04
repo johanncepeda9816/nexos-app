@@ -1,6 +1,6 @@
 package com.nexos.app.repositories;
 
-import com.nexos.app.entities.ModificationRegister;
+import com.nexos.app.model.ModificationRegister;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

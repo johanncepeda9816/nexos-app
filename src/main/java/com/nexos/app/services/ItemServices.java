@@ -3,8 +3,8 @@ package com.nexos.app.services;
 import java.sql.Date;
 import java.util.List;
 
-import com.nexos.app.AppException;
-import com.nexos.app.entities.Item;
+import com.nexos.app.exceptions.AppException;
+import com.nexos.app.model.Item;
 
 public interface ItemServices {
     List<Item> allItems();

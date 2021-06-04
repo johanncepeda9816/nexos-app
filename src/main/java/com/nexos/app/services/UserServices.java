@@ -2,7 +2,7 @@ package com.nexos.app.services;
 
 import java.util.List;
 
-import com.nexos.app.entities.User;
+import com.nexos.app.model.User;
 
 public interface UserServices {
 

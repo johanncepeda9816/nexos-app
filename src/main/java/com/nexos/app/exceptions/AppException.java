@@ -1,4 +1,4 @@
-package com.nexos.app;
+package com.nexos.app.exceptions;
 
 public class AppException extends Exception{
 
