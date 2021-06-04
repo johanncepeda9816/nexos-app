@@ -1,0 +1,23 @@
+create table users(
+	id serial,
+	name varchar(20) not null,
+	age integer not null,
+	position varchar(50) not null,
+	enter_date date not null
+);
+
+create table items(
+	name varchar(250) not null,
+	product varchar(250) not null,
+	amount integer not null, 
+	enter_date date not null,
+	creator varchar(20) not null,
+	modified bool not null
+);
+
+create table modifications(
+	id serial,
+	modifier integer not null,
+	item varchar(250) not null,
+	date date not null
+);
