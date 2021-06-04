@@ -33,7 +33,7 @@ public class ItemServicesImpl implements ItemServices {
     public void addItem(Item item) throws AppException {
         Optional<User> user = userRepository.findById(item.getCreatorId());
         Optional<Item> existingItem = itemRepository.findById(item.getName());
-        if (user.isEmpty())
+        if (!user.isPresent())
             throw new AppException(AppException.USER_NOT_FOUND);
 
         else if (existingItem.isPresent())
@@ -68,7 +68,7 @@ public class ItemServicesImpl implements ItemServices {
     @Override
     public void deleteItem(String name) throws AppException {
         Optional<Item> item = itemRepository.findById(name);
-        if(item.isEmpty())
+        if(!item.isPresent())
             throw new AppException(AppException.ITEM_DO_NOT_EXISTS);
         else
             itemRepository.delete(item.get());
