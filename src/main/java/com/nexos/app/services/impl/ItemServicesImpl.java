@@ -3,6 +3,7 @@ package com.nexos.app.services.impl;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 import com.nexos.app.AppException;
@@ -28,6 +29,26 @@ public class ItemServicesImpl implements ItemServices {
 
     @Autowired
     ModificationsRepository modificationsRepository;
+
+    @Override
+    public List<Item> allItems() {
+        return itemRepository.findAll();
+    }
+
+    @Override
+    public List<Item> findByDate(Date date) {
+        return itemRepository.findByEnterDate(date);
+    }
+
+    @Override
+    public List<Item> findByUser(int user) {
+        return findByUser(user);
+    }
+
+    @Override
+    public Item findByName(String name) {
+        return itemRepository.findById(name).get();
+    }
 
     @Override
     public void addItem(Item item) throws AppException {
@@ -84,5 +105,4 @@ public class ItemServicesImpl implements ItemServices {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return now.format(format);
     }
-
 }

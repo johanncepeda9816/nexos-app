@@ -1,5 +1,8 @@
 package com.nexos.app.controllers;
 
+import java.sql.Date;
+import java.util.List;
+
 import com.nexos.app.entities.Item;
 import com.nexos.app.services.ItemServices;
 
@@ -20,6 +23,46 @@ public class ItemController {
 
     @Autowired
     ItemServices itemServices;
+
+    @RequestMapping(method = RequestMethod.GET, path = { "findAll" })
+    public ResponseEntity<List<Item>> findAll(){
+        try {
+            return ResponseEntity.ok().body(itemServices.allItems());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = { "findByDate" })
+    public ResponseEntity<List<Item>> findAll(@RequestParam("date") Date date){
+        try {
+            return ResponseEntity.ok().body(itemServices.findByDate(date));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = { "findByName" })
+    public ResponseEntity<Item> findAll(@RequestParam("name") String name){
+        try {
+            return ResponseEntity.ok().body(itemServices.findByName(name));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = { "findByUser" })
+    public ResponseEntity<List<Item>> findAll(@RequestParam("user") int user){
+        try {
+            return ResponseEntity.ok().body(itemServices.findByUser(user));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @RequestMapping(method = RequestMethod.POST, path = { "addItem" })
     public ResponseEntity<?> addItem(@RequestBody Item item){
