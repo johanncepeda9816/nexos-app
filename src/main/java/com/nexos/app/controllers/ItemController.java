@@ -44,9 +44,9 @@ public class ItemController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = { "deleteItem" })
-    public ResponseEntity<?> deleteItem(@RequestParam("name") String name){
+    public ResponseEntity<?> deleteItem(@RequestParam("name") String name, @RequestParam("user") int user){
         try {
-            itemServices.deleteItem(name);
+            itemServices.deleteItem(name, user);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

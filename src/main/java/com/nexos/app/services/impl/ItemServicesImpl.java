@@ -66,12 +66,17 @@ public class ItemServicesImpl implements ItemServices {
     }
 
     @Override
-    public void deleteItem(String name) throws AppException {
+    public void deleteItem(String name, int user) throws AppException {
         Optional<Item> item = itemRepository.findById(name);
         if(!item.isPresent())
             throw new AppException(AppException.ITEM_DO_NOT_EXISTS);
-        else
-            itemRepository.delete(item.get());
+        else{
+            Optional<User> userExists = userRepository.findById(item.get().getCreatorId());
+            if(userExists.isPresent() && (user == item.get().getCreatorId()))
+                itemRepository.delete(item.get());
+            else
+                throw new AppException(AppException.ONLY_CREATOR_CAN_DELETE_ITEM);
+        }
     }
 
     private String getFormatedDate() {

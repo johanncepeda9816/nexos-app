@@ -6,5 +6,5 @@ import com.nexos.app.entities.Item;
 public interface ItemServices {
     void addItem(Item item) throws AppException;
     void updateItem(Item item, int user) throws AppException;
-    void deleteItem(String name) throws AppException;
+    void deleteItem(String name, int user) throws AppException;
 }
